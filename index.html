@@ -3,14 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Agent Display</title>
+    <title>User Agent Test</title>
 </head>
 <body>
-    <h1>User Agent Display</h1>
-    <p id="userAgentDisplay">Loading user agent...</p>
+    <h1>User Agent Test</h1>
+    <p id="userAgent"></p>
+    <p id="isInstagramBrowser"></p>
 
     <script>
-        document.getElementById('userAgentDisplay').textContent = 'User Agent: ' + navigator.userAgent;
+        document.getElementById('userAgent').textContent = 'Your User Agent is: ' + navigator.userAgent;
+
+        function isInstagramInAppBrowser() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            return /Instagram/.test(userAgent);
+        }
+
+        if (isInstagramInAppBrowser()) {
+            document.getElementById('isInstagramBrowser').textContent = 'You are viewing this in the Instagram in-app browser.';
+        } else {
+            document.getElementById('isInstagramBrowser').textContent = 'You are not viewing this in the Instagram in-app browser.';
+        }
     </script>
 </body>
 </html>
